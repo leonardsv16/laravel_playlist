@@ -10,6 +10,8 @@ Route::get('playlists/{playlist}', [PlaylistController::class, 'show'])->name('p
 Route::get('playlists/{playlist}/edit', [PlaylistController::class, 'edit'])->name('playlists.edit'); // Edit a playlist
 Route::put('playlists/{playlist}', [PlaylistController::class, 'update'])->name('playlists.update'); // Update playlist
 Route::delete('playlists/{playlist}', [PlaylistController::class, 'destroy'])->name('playlists.destroy'); // Delete a playlist
+Route::post('/playlists/{playlist}/addSong', [PlaylistController::class, 'addSong'])->name('playlists.addSong');
+
 
 // Route::get('/', function () {
 //     return view('playlist.index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Playlist;
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class PlaylistController extends Controller
@@ -18,6 +19,21 @@ class PlaylistController extends Controller
     {
         return view('playlists.create');
     }
+    public function addSong(Request $request, Playlist $playlist)
+{
+    // Validate the song selection
+    $request->validate([
+        'song_id' => 'required|exists:songs,id',
+    ]);
+
+    // Add the song to the playlist (ensure your Playlist model has a songs relationship)
+    $playlist->songs()->attach($request->song_id);
+
+    return redirect()->route('playlists.show', $playlist->id)
+        ->with('success', 'Song added to playlist successfully.');
+}
+
+    
 
     public function store(Request $request)
     {
@@ -31,9 +47,11 @@ class PlaylistController extends Controller
     }
 
     public function show(Playlist $playlist)
-    {
-        return view('playlists.show', compact('playlist'));
-    }
+{
+    $songs = Song::all(); // Fetch all songs to display in the dropdown
+    return view('playlists.show', compact('playlist', 'songs'));
+}
+
 
     public function edit(Playlist $playlist)
     {
