@@ -11,6 +11,6 @@ Route::get('playlists/{playlist}/edit', [PlaylistController::class, 'edit'])->na
 Route::put('playlists/{playlist}', [PlaylistController::class, 'update'])->name('playlists.update'); // Update playlist
 Route::delete('playlists/{playlist}', [PlaylistController::class, 'destroy'])->name('playlists.destroy'); // Delete a playlist
 
-Route::get('/', function () {
-    return view('playlists.index');
-});
+// Route::get('/', function () {
+//     return view('playlist.index');
+// });
