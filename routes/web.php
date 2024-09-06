@@ -12,5 +12,5 @@ Route::put('playlists/{playlist}', [PlaylistController::class, 'update'])->name(
 Route::delete('playlists/{playlist}', [PlaylistController::class, 'destroy'])->name('playlists.destroy'); // Delete a playlist
 
 Route::get('/', function () {
-    return view('index');
+    return view('playlists.index');
 });
